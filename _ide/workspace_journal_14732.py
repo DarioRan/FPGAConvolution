@@ -6,3 +6,5 @@ client.set_workspace(path="convolution")
 
 comp = client.create_hls_component(name = "convolution_hls",cfg_file = ["hls_config.cfg"],template = "empty_hls_component")
 
+vitis.dispose()
+
