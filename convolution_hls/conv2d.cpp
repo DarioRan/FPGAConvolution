@@ -42,7 +42,7 @@ void 2dconv(hls::stream<int> &D_in, hls::stream<int> &D_out) {
             mix[2][2]=tmp;
 
             for (int i=0; i<2; i++){
-                mem[1][i]=mix[i+1][i];
+                mem[i][w]=mix[i+1][2];
             }
 
             //KERNEL
