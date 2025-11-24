@@ -16,8 +16,20 @@ void save(int *result, hls::stream<int> &D_out) {
 
 void 2dconv(hls::stream<int> &D_in, hls::stream<int> &D_out) {
 
-    int mix[3][3];
+    int mix[N][N];
     int mem[2][W];
+
+
+    int kernel[N][N]={{1,0,0},};
+    kernel[0][0]=1;
+    kernel[0][1]=0;
+    kernel[0][2]=0;
+    kernel[1][0]=0;
+    kernel[1][1]=0;
+    kernel[1][2]=0;
+    kernel[2][0]=0;
+    kernel[2][1]=0;
+    kernel[2][2]=0;
 
     int v=0;
 
@@ -45,8 +57,13 @@ void 2dconv(hls::stream<int> &D_in, hls::stream<int> &D_out) {
                 mem[i][w]=mix[i+1][2];
             }
 
-            //KERNEL
             v=0;
+            for(i=0;i<N;i++){
+                for(j=0;j<N;j++){
+                    v+=mix[i][j]*kernel[i][j];
+                }
+            }
+        
 
             if w>1 & h>1{
                 D_out.write(v)

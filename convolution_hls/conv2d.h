@@ -1,4 +1,4 @@
-#define N (128)
+#define N (3)
 #define H (500)
 #define W (500)
 
